@@ -23,7 +23,7 @@ public class UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Size(max = 30, min = 2)
+	@Size(max = 30, min = 2 )
 	private String username;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -31,11 +31,11 @@ public class UserDetails {
 
 	@Transient
 	private Address address;
-	@Email
+	@Email(message = "Please enter your email addresss.")
 	private String emailid;
-	@NotEmpty
+	@NotEmpty(message="Enter your password")
 	private String password;
-	@NotEmpty
+	@NotEmpty(message="Enter your same password again")
 	private String confirmpassword;
 	private boolean enabled;
 	private String role;

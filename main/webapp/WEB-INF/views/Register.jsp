@@ -8,53 +8,48 @@
 <head>
 <title>Register Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+	background:
+		url('http://www.publicdomainpictures.net/pictures/50000/velka/flower-meadow.jpg')
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/* .btn-group-vertical {
+	width: 200px;
+} */
+form {
+	max-width: 400px;
+	padding: 15px 35px 45px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#regForm, #addressForm {
+	font-size: 10px;
+	max-width: 320px;
+}
+
+.message {
+	color: red;
+}
+</style>
 </head>
 
 <body>
 
-<style>
 
-
-body { 
-  background: url('http://www.publicdomainpictures.net/pictures/50000/velka/flower-meadow.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.btn-group-vertical{
-	
-	width: 200px;
-
-	}
-   
-form{
-  max-width: 400px;
-  padding: 15px 35px 45px;
-  margin: 0 auto;
-  background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1);  
-
-  }
- #regForm,#addressForm {
-	  position: relative;
-	  font-size: 16px;
-	  height: 410px;
-	   max-width: 320px;
-	  padding: 10px;
-		@include box-sizing(border-box);
-
-		&:focus {
-		  z-index: 2;
-		}
-	}  
-
-
-</style>
 	<%@ include file="header.jsp"%>
 
 	<spring:form action="getData" method="POST"
@@ -62,51 +57,64 @@ form{
 		<div class="container">
 
 			<div id="regForm">
-			
-			<center> <h3>For New Users!!!</h3></center>
+				<div class="container">
 
-				<spring:label path="username" >Username: </spring:label>
-				<spring:input path="username" placeholder="Enter Your UserName"
-					name="username" />
+
+					<h3>For New Users!!!</h3>
+				</div>
+
+
+				<spring:label path="username">Username: </spring:label>
+				<spring:input path="username" class="form-control"
+					placeholder="Enter Your UserName" name="username" />
+				<spring:errors path="username" class="message" />
 				<br>
 
 
 				<spring:label path="password">Password:</spring:label>
-				<spring:input path="password" placeholder="Enter Password"
-					name="password" type="password"  />
+				<spring:input path="password" class="form-control"
+					placeholder="Enter Password" name="password" type="password" />
+				<spring:errors path="password" class="message" />
 				<br>
 
 				<spring:label path="Confirmpassword">Confirm Password:</spring:label>
-				<spring:input path="Confirmpassword"
-					placeholder="Enter Password again" name="Confirmpassword" type="password" />
+				<spring:input path="Confirmpassword" class="form-control"
+					placeholder="Enter Password again" name="Confirmpassword"
+					type="password" />
+				<spring:errors path="Confirmpassword" class="message" />
+
+
 				<br>
 
 
 				<spring:label path="emailid">emailid:</spring:label>
-				<spring:input path="emailid" placeholder="Enter Your EmailId"
-					name="emailid" />
+				<spring:input path="emailid" class="form-control"
+					placeholder="Enter Your EmailId" name="emailid" />
+				<spring:errors path="emailid" class="message" />
 				<br>
-				
-				<button id="addressBtn" type="button" class="btn btn-info">Click to Enter Address</button>
+
+				<button id="addressBtn" type="button" class="btn btn-info">Click
+					to Enter Address</button>
 
 				<spring:hidden path="id" />
-</div>
-			
-			
-			
+			</div>
+
+
+
 			<div id="addressForm">
 				<spring:label path="address.door">Door No:</spring:label>
 				<spring:input path="address.door" placeholder="Enter Your door no"
 					name="door" required="true" />
 
 				<spring:label path="address.street">street:</spring:label>
-				<spring:input path="address.street"
+				<spring:input path="address.street" class="form-control"
 					placeholder="Enter Your street name" name="street" />
 				<spring:label path="address.state">state:</spring:label>
-				<spring:input path="address.state" placeholder="Enter Your state"
-					name="state" />
+				<spring:input path="address.state" class="form-control"
+					placeholder="Enter Your state" name="state" />
 				<spring:label path="address.pin">Pin code:</spring:label>
-				<spring:input path="address.pin" placeholder="pin code" name="pin" />
+				<spring:input path="address.pin" class="form-control"
+					placeholder="pin code" name="pin" />
 
 
 
@@ -117,20 +125,28 @@ form{
 
 			</div>
 		</div>
-
 	</spring:form>
 
 	<script type="text/javascript">
-		$(document).ready(function(){
-			
+		$(document).ready(function() {
+
 			$('#addressForm').fadeOut();
-			
-			$('#addressBtn').on('click',function(){
+
+			$('#addressBtn').on('click', function() {
 				$('#regForm').hide();
 				$('#addressForm').fadeIn(700);
 			});
-			
+
 		});
+
+		function check() {
+
+			var password = document.getElementById("password").value;
+			var confirmpassword = document.getElementById("confirmpassword").value;
+			if (password.value != confirmpassword.value) {
+				confirmpassword.setCustomValidity("password donot match");
+			}
+		}
 	</script>
 
 </body>

@@ -19,13 +19,14 @@
 
 <body>
 	<form:form class="form-horizontal"
-		action="${pageContext.request.contextPath}/upload" method="POST"
+		action="${pageContext.request.contextPath}/upload/${uploadProduct.id}" method="POST"
 		modelAttribute="product" enctype="multipart/form-data">
 
 		<form:label path="file" for="productName">Choose Image:</form:label><br/>
 		<form:input name="file" path="file" type="file" /><br/>
-		<!-- <button type="submit" class="btn btn-primary">Upload</button><br/>
- -->
+		
+		<form:button type = "submit" class="btn btn-info">Upload</form:button>
+		
 	</form:form>
 
 </body>
